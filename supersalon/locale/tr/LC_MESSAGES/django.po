@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-11 01:30+0200\n"
+"POT-Creation-Date: 2015-11-11 01:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -313,6 +313,7 @@ msgstr "Şifremi Yenile"
 #: supersalon/templates/account/password_reset.html:27
 msgid "Please contact us if you have any trouble resetting your password."
 msgstr ""
+"Şifrenizi yenilemekte sıkıntı yaşıyorsanız lütfen bizimle iletişime geçiniz."
 
 #: supersalon/templates/account/password_reset_done.html:18
 msgid ""
@@ -370,14 +371,14 @@ msgstr "Üyelik İşlemlerine Kapalı"
 
 #: supersalon/templates/account/signup_closed.html:14
 msgid "We are sorry, but the sign up is currently closed."
-msgstr ""
+msgstr "Üzgünüz, üyelik işlemlerine şimdilik kapalıyız."
 
 #: supersalon/templates/account/verification_sent.html:5
 #: supersalon/templates/account/verification_sent.html:11
 #: supersalon/templates/account/verified_email_required.html:6
 #: supersalon/templates/account/verified_email_required.html:12
 msgid "Verify Your E-mail Address"
-msgstr ""
+msgstr "E-posta Adresini Doğrular"
 
 #: supersalon/templates/account/verification_sent.html:13
 #, python-format
