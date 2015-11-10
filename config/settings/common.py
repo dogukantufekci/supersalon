@@ -63,6 +63,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 MIDDLEWARE_CLASSES = (
     # Make sure djangosecure.middleware.SecurityMiddleware is listed first
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -121,7 +122,7 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 TIME_ZONE = 'Europe/Nicosia'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'tr'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
@@ -232,6 +233,21 @@ AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
 
 # Location of root django.contrib.admin URL, use {% url 'admin:index' %}
 ADMIN_URL = r'^admin/'
+
+
+# TRANSLATION CONFIGURATION
+# ------------------------------------------------------------------------------
+from django.utils.translation import ugettext_lazy as _
+
+LANGUAGES = (
+    ('en', _('English')),
+    ('tr', _('Turkish')),
+)
+
+LOCALE_PATHS = (
+    str(APPS_DIR.path('locale')),
+)
+
 
 # Your common stuff: Below this line define 3rd party library settings
 GRAPPELLI_ADMIN_TITLE = "SuperSalon"
