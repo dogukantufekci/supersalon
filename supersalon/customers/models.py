@@ -23,6 +23,17 @@ class Customer(models.Model):
     # Visits
     last_visit = models.DateField(_("Last Visit"), blank=True, null=True)
 
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = _("Customer")
+        verbose_name_plural = _("Customer")
+
+
+    def __str__(self):
+        return _("{name} ({gender}{age})").format(name=self.name, gender=self.get_gender_display()[0], age=self.get_age())
+
+
     def admin_photo(self):
         return '<img style="max-height:100px; max-width:100px;" src="%s"/>' % self.photo.url
     admin_photo.allow_tags = True
