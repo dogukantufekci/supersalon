@@ -14,4 +14,4 @@ class Professional(models.Model):
 
 
     def __str__(self):
-        return _("Professional {user_full_name}").format(user_full_name=self.user.get_full_name())
+        return _("{user_full_name}").format(user_full_name=self.user.get_full_name())
