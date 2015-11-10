@@ -40,5 +40,5 @@ redis>=2.10.0
 
 
 # Your custom requirements go here
-django-autocomplete-light==2.2.10
+django-grappelli==2.7.2
 django-phonenumber-field==0.7.2

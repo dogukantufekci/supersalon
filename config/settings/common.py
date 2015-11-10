@@ -31,6 +31,8 @@ DJANGO_APPS = (
     # Useful template tags:
     # 'django.contrib.humanize',
 
+    # Grappelli for Admin Interface
+    'grappelli',
     # Admin
     'django.contrib.admin',
 )
@@ -40,7 +42,6 @@ THIRD_PARTY_APPS = (
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
     # Your stuff
-    'autocomplete_light',
     'phonenumber_field',
 )
 
@@ -233,3 +234,9 @@ AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
 ADMIN_URL = r'^admin/'
 
 # Your common stuff: Below this line define 3rd party library settings
+GRAPPELLI_ADMIN_TITLE = "SuperSalon"
+GRAPPELLI_AUTOCOMPLETE_SEARCH_FIELDS = {
+    "customers": {
+        "customer": ("id__iexact", "name__icontains",)
+    }
+}

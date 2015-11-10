@@ -23,6 +23,10 @@ class Customer(models.Model):
     # Visits
     last_visit = models.DateField(_("Last Visit"), blank=True, null=True)
 
+    @staticmethod
+    def autocomplete_search_fields():
+        return ("id__iexact", "name__icontains",)
+
 
     class Meta:
         ordering = ('name',)

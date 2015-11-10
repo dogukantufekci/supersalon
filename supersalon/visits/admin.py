@@ -48,6 +48,10 @@ class VisitAdmin(admin.ModelAdmin):
         (_('Notes'), {'fields': ('notes',)}),
     )
     inlines = (ProductPurchaseInlineAdmin, ServicePurchaseInlineAdmin,)
+    raw_id_fields = ('customer',)
+    autocomplete_lookup_fields = {
+        'fk': ['customer'],
+    }
 
 
 admin.site.register(Visit, VisitAdmin)
