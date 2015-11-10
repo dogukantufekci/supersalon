@@ -19,6 +19,7 @@ class Visit(models.Model):
     female_guest_count = models.PositiveSmallIntegerField(_("Female Guest Count"), default=0)
     male_guest_count = models.PositiveSmallIntegerField(_("Male Guest Count"), default=0)
     child_guest_count = models.PositiveSmallIntegerField(_("Child Guest Count"), default=0)
+
     # Payment Fields
     payment_method = models.PositiveSmallIntegerField(_("Payment Method"), choices=PAYMENT_METHODS)
     total_payment_amount = models.DecimalField(_("Total Payment Amount"), decimal_places=2, max_digits=8)

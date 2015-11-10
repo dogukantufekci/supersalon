@@ -1,7 +1,37 @@
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
+from supersalon.purchases.models import ProductPurchase, ServicePurchase
+
 from .models import Visit
+
+
+class ProductPurchaseInlineAdmin (admin.TabularInline):
+    """Inline configuration for Django's admin on the ProductPurchase model."""
+    model = ProductPurchase
+    extra = 5
+
+    def get_extra (self, request, obj=None, **kwargs):
+        """Dynamically sets the number of extra forms. 0 if the related object
+        already exists or the extra configuration otherwise."""
+        if obj:
+            # Don't add any extra forms if the related object already exists.
+            return 0
+        return self.extra
+
+
+class ServicePurchaseInlineAdmin (admin.TabularInline):
+    """Inline configuration for Django's admin on the ServicePurchase model."""
+    model = ServicePurchase
+    extra = 5
+
+    def get_extra (self, request, obj=None, **kwargs):
+        """Dynamically sets the number of extra forms. 0 if the related object
+        already exists or the extra configuration otherwise."""
+        if obj:
+            # Don't add any extra forms if the related object already exists.
+            return 0
+        return self.extra
 
 
 class VisitAdmin(admin.ModelAdmin):    
@@ -17,6 +47,7 @@ class VisitAdmin(admin.ModelAdmin):
         (_('Payment Fields'), {'fields': ('payment_method', 'total_payment_amount',)}),
         (_('Notes'), {'fields': ('notes',)}),
     )
+    inlines = (ProductPurchaseInlineAdmin, ServicePurchaseInlineAdmin,)
 
 
 admin.site.register(Visit, VisitAdmin)
