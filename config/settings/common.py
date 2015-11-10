@@ -48,6 +48,7 @@ LOCAL_APPS = (
     'supersalon.users',  # custom users app
     # Your stuff: custom apps go here
     'supersalon.customers',
+    'supersalon.professionals',
     'supersalon.purchases',
     'supersalon.visits',
 )
