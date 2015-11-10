@@ -19,10 +19,8 @@ class ProductPurchase(models.Model):
 
     # Visit
     visit = models.ForeignKey('visits.Visit', verbose_name=_("Visit"))
-    # Professional
-    professional = models.ForeignKey('professionals.Professional', verbose_name=_("Professional"))
     # Product Fields
-    product = models.PositiveSmallIntegerField(_("Service"), choices=PRODUCTS)
+    product = models.PositiveSmallIntegerField(_("Product"), choices=PRODUCTS)
     count = models.PositiveSmallIntegerField(_("Count"), default=1)
 
 
@@ -58,7 +56,6 @@ class ServicePurchase(models.Model):
     professional = models.ForeignKey('professionals.Professional', verbose_name=_("Professional"))
     # Service Fields
     service = models.PositiveSmallIntegerField(_("Service"), choices=SERVICES)
-    count = models.PositiveSmallIntegerField(_("Count"), default=1)
 
 
     class Meta:

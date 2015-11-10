@@ -40,6 +40,7 @@ THIRD_PARTY_APPS = (
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
     # Your stuff
+    'autocomplete_light',
     'phonenumber_field',
 )
 
