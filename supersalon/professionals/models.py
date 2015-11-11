@@ -4,8 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 class Professional(models.Model):
     # User
-    user = models.OneToOneField('users.User', primary_key=True)
-
+    user = models.OneToOneField('users.User', primary_key=True, related_name='professional', verbose_name=_("User"))
 
     class Meta:
         ordering = ('user__first_name', 'user__last_name',)
@@ -14,4 +13,4 @@ class Professional(models.Model):
 
 
     def __str__(self):
-        return _("{user_full_name}").format(user_full_name=self.user.get_full_name())
+        return self.user.get_full_name()

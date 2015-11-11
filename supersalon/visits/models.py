@@ -14,7 +14,8 @@ class Visit(models.Model):
     customer = models.ForeignKey('customers.Customer', verbose_name=_("Customer"))
     # Date Fields
     visit_date = models.DateField(_("Visit Date"), default=timezone.now)
-    visit_time = models.TimeField(_("Visit Time"), blank=True, null=True)
+    arrival_time = models.TimeField(_("Arrival Time"), blank=True, null=True)
+    departure_time = models.TimeField(_("Departure Time"), blank=True, null=True)
     # Guest Fields
     female_guest_count = models.PositiveSmallIntegerField(_("Female Guest Count"), default=0)
     male_guest_count = models.PositiveSmallIntegerField(_("Male Guest Count"), default=0)
@@ -36,3 +37,17 @@ class Visit(models.Model):
 
     def __str__(self):
         return _("{customer}'s Visit").format(customer=self.customer)
+
+
+    def str_product_purchases(self):
+        x = ""
+        for product_purchase in self.product_purchases.all():
+            x += "%s, " % product_purchase.product.name
+        return x 
+
+
+    def str_service_purchases(self):
+        x = ""
+        for service_purchase in self.service_purchases.all():
+            x += "%s, " % service_purchase.service.name
+        return x

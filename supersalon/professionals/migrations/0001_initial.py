@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Professional',
             fields=[
-                ('user', models.OneToOneField(to=settings.AUTH_USER_MODEL, primary_key=True, serialize=False)),
+                ('user', models.OneToOneField(to=settings.AUTH_USER_MODEL, primary_key=True, verbose_name='User', related_name='professional', serialize=False)),
             ],
             options={
                 'ordering': ('user__first_name', 'user__last_name'),

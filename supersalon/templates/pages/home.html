@@ -3,8 +3,8 @@
 
 
 {% block content %}
-<p><a href="{% url 'admin:index' %}">{% trans "Go to Admin" %}</a></p>
-<p>{% trans "Set your language" %}</p>
+<h2>{% trans "Change language" %}</h2>
+<p>{% trans "Select your preferred language and click 'Change' button." %}</p>
 <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
     <input name="next" type="hidden" value="{{ redirect_to }}" />
     <select name="language">
@@ -17,6 +17,6 @@
             </option>
         {% endfor %}
     </select>
-    <input type="submit" value="Go" />
+    <input type="submit" value="{% trans 'Change' %}" />
 </form>
 {% endblock content %}

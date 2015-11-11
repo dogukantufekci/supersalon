@@ -14,14 +14,19 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Customer',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('photo', models.ImageField(default='customers/placeholder.jpg', max_length=255, upload_to='customers', verbose_name='Photo')),
+                ('id', models.AutoField(primary_key=True, serialize=False, verbose_name='ID', auto_created=True)),
+                ('photo', models.ImageField(default='customers/placeholder.jpg', upload_to='customers', max_length=255, verbose_name='Photo')),
                 ('name', models.CharField(max_length=255, verbose_name='Name')),
-                ('birth_date', models.DateField(blank=True, verbose_name='Birth Date')),
-                ('gender', models.CharField(choices=[('f', 'Female'), ('m', 'Male')], max_length=1, blank=True, verbose_name='Gender')),
-                ('mobile_phone_number', phonenumber_field.modelfields.PhoneNumberField(max_length=128, blank=True, verbose_name='Mobile Phone Number')),
-                ('email', models.EmailField(max_length=254, blank=True, verbose_name='Email')),
-                ('last_visit', models.DateField(blank=True, null=True, verbose_name='Last Visit')),
+                ('birth_date', models.DateField(null=True, verbose_name='Birth Date', blank=True)),
+                ('gender', models.CharField(default='u', choices=[('u', 'Unknown'), ('f', 'Female'), ('m', 'Male')], max_length=1, verbose_name='Gender')),
+                ('mobile_phone_number', phonenumber_field.modelfields.PhoneNumberField(max_length=128, verbose_name='Mobile Phone Number', blank=True)),
+                ('email', models.EmailField(max_length=254, verbose_name='E-mail', blank=True)),
+                ('last_visit', models.DateField(null=True, verbose_name='Last Visit', blank=True)),
             ],
+            options={
+                'ordering': ('name',),
+                'verbose_name': 'Customer',
+                'verbose_name_plural': 'Customer',
+            },
         ),
     ]

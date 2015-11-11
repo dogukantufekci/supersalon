@@ -3,25 +3,17 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class ProductPurchase(models.Model):
-    PRODUCTS = (
-        (0, _('Other')),
-        (_('Nashi Argan'), (
-                (1001, 'Color #2543 (Nashi Argan)'),
-                (1002, 'Color #1231 (Nashi Argan)'),
-            )
-        ),
-        (_('Schwarzkopf'), (
-                (2001, 'Color #2543 (Schwarzkopf)'),
-                (2002, 'Color #1231 (Schwarzkopf)'),
-            )
-        ),
-    )
-
     # Visit
-    visit = models.ForeignKey('visits.Visit', verbose_name=_("Visit"))
+    visit = models.ForeignKey('visits.Visit', 
+        related_name='product_purchases',
+        related_query_name='product_purchase',
+        verbose_name=_("Visit"))
     # Product Fields
-    product = models.PositiveSmallIntegerField(_("Product"), choices=PRODUCTS)
-    count = models.PositiveSmallIntegerField(_("Count"), default=1)
+    product = models.ForeignKey('products.Product',
+        related_name='product_purchases',
+        related_query_name='product_purchase',
+        verbose_name=_("Product"))
+    amount = models.PositiveSmallIntegerField(_("Amount"), default=1)
 
 
     class Meta:
@@ -32,30 +24,25 @@ class ProductPurchase(models.Model):
 
 
     def __str__(self):
-        return _("{customer} purchased {product}").format(customer=self.visit.customer, product=self.get_product_display())
+        return _("{customer} purchased {product}").format(customer=self.visit.customer, product=self.product.name)
 
 
 class ServicePurchase(models.Model):
-    SERVICES = (
-        (0, _('Other')),
-        (_('Hair (Woman)'), (
-                (101, 'Hair Cut'),
-                (102, 'Hair Coloring'),
-            )
-        ),
-        (_('Nail (Woman)'), (
-                (201, 'Manicure'),
-                (202, 'Pedicure'),
-            )
-        ),
-    )
-
     # Visit
-    visit = models.ForeignKey('visits.Visit', verbose_name=_("Visit"))
+    visit = models.ForeignKey('visits.Visit', 
+        related_name='service_purchases',
+        related_query_name='service_purchase',
+        verbose_name=_("Visit"))
     # Professional
-    professional = models.ForeignKey('professionals.Professional', verbose_name=_("Professional"))
+    professional = models.ForeignKey('professionals.Professional', 
+        related_name='service_purchases',
+        related_query_name='service_purchase',
+        verbose_name=_("Professional"))
     # Service Fields
-    service = models.PositiveSmallIntegerField(_("Service"), choices=SERVICES)
+    service = models.ForeignKey('services.Service',
+        related_name='product_purchases',
+        related_query_name='product_purchase',
+        verbose_name=_("Service"))
 
 
     class Meta:
@@ -66,4 +53,4 @@ class ServicePurchase(models.Model):
 
 
     def __str__(self):
-        return _("{customer} purchased {service}").format(customer=self.visit.customer, service=self.get_service_display())
+        return _("{customer} purchased {service}").format(customer=self.visit.customer, service=self.service.name)

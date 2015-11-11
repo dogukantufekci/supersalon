@@ -8,6 +8,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 class Customer(models.Model):
     GENDERS = (
+        ('u', _("Unknown")),
         ('f', _("Female")),
         ('m', _("Male")),
     )
@@ -15,11 +16,11 @@ class Customer(models.Model):
     # Basic Profile
     photo = models.ImageField(_("Photo"), max_length=255, upload_to='customers', default='customers/placeholder.jpg')
     name = models.CharField(_("Name"), max_length=255)
-    birth_date = models.DateField(_("Birth Date"), blank=True)
-    gender = models.CharField(_("Gender"), blank=True, choices=GENDERS, max_length=1)
+    birth_date = models.DateField(_("Birth Date"), blank=True, null=True)
+    gender = models.CharField(_("Gender"), choices=GENDERS, default='u', max_length=1)
     # Contact Info
     mobile_phone_number = PhoneNumberField(_("Mobile Phone Number"), blank=True)
-    email = models.EmailField(_("Email"), blank=True)
+    email = models.EmailField(_("E-mail"), blank=True)
     # Visits
     last_visit = models.DateField(_("Last Visit"), blank=True, null=True)
 
@@ -35,7 +36,7 @@ class Customer(models.Model):
 
 
     def __str__(self):
-        return _("{name} ({gender}{age})").format(name=self.name, gender=self.get_gender_display()[0], age=self.get_age())
+        return _("{name} ({gender}-{age})").format(name=self.name, gender=self.get_gender_display()[0], age=self.get_age())
 
 
     def admin_photo(self):

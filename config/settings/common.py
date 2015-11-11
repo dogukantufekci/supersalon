@@ -51,7 +51,10 @@ LOCAL_APPS = (
     # Your stuff: custom apps go here
     'supersalon.customers',
     'supersalon.professionals',
+    'supersalon.products',
     'supersalon.purchases',
+    'supersalon.reminders',
+    'supersalon.services',
     'supersalon.visits',
 )
 
@@ -216,10 +219,11 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-# Some really nice defaults
-ACCOUNT_AUTHENTICATION_METHOD = 'username'
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USERNAME_BLACKLIST = ['me',]
+ACCOUNT_SIGNUP_PASSWORD_VERIFICATION = False
 
 # Custom user app defaults
 # Select the correct user model
