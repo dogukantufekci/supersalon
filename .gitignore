@@ -34,10 +34,6 @@ pip-log.txt
 nosetests.xml
 htmlcov
 
-# Translations
-*.mo
-*.pot
-
 # Pycharm
 .idea
 
