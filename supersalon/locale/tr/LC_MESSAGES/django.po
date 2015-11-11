@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-11 19:14+0200\n"
+"POT-Creation-Date: 2015-11-11 22:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,8 @@ msgstr "İngilizce"
 msgid "Turkish"
 msgstr "Türkçe"
 
-#: supersalon/customers/admin.py:14
+#: supersalon/customers/admin.py:14 supersalon/products/admin.py:18
+#: supersalon/services/admin.py:20
 msgid "Basic Profile"
 msgstr "Temel Profil"
 
@@ -39,57 +40,65 @@ msgid "Visits"
 msgstr "Ziyaretler"
 
 #: supersalon/customers/models.py:11
+msgid "Unknown"
+msgstr "Bilinmeyen"
+
+#: supersalon/customers/models.py:12
 msgid "Female"
 msgstr "Kadın"
 
-#: supersalon/customers/models.py:12
+#: supersalon/customers/models.py:13
 msgid "Male"
 msgstr "Erkek"
 
-#: supersalon/customers/models.py:16
+#: supersalon/customers/models.py:17
 msgid "Photo"
 msgstr "Fotoğraf"
 
-#: supersalon/customers/models.py:17
+#: supersalon/customers/models.py:18
 msgid "Name"
 msgstr "İsim"
 
-#: supersalon/customers/models.py:18
+#: supersalon/customers/models.py:19
 msgid "Birth Date"
 msgstr "Doğum Tarihi"
 
-#: supersalon/customers/models.py:19
+#: supersalon/customers/models.py:20
 msgid "Gender"
 msgstr "Cinsiyet"
 
-#: supersalon/customers/models.py:21
+#: supersalon/customers/models.py:22
 msgid "Mobile Phone Number"
 msgstr "Mobil Telefon Numarası"
 
-#: supersalon/customers/models.py:22
+#: supersalon/customers/models.py:23
 msgid "E-mail"
 msgstr "E-posta"
 
-#: supersalon/customers/models.py:24
+#: supersalon/customers/models.py:25
 msgid "Last Visit"
 msgstr "Son Ziyaret"
 
-#: supersalon/customers/models.py:33 supersalon/customers/models.py:34
-#: supersalon/reminders/models.py:7 supersalon/visits/admin.py:44
+#: supersalon/customers/models.py:34 supersalon/customers/models.py:35
+#: supersalon/reminders/models.py:7 supersalon/visits/admin.py:45
 #: supersalon/visits/models.py:14
 msgid "Customer"
 msgstr "Müşteri"
 
-#: supersalon/customers/models.py:38
+#: supersalon/customers/models.py:39
 #, python-brace-format
-msgid "{name} ({gender}{age})"
+msgid "{name} ({gender}-{age})"
 msgstr "{name} ({gender}{age})"
+
+#: supersalon/products/admin.py:19 supersalon/services/admin.py:21
+msgid "Price Fields"
+msgstr "Ücret Alanları"
 
 #: supersalon/products/models.py:6
 msgid "Name of Product Category"
 msgstr "Ürün Kategori Adı"
 
-#: supersalon/products/models.py:10
+#: supersalon/products/models.py:10 supersalon/products/models.py:21
 msgid "Product Category"
 msgstr "Ürün Kategorisi"
 
@@ -97,91 +106,70 @@ msgstr "Ürün Kategorisi"
 msgid "Product Categories"
 msgstr "Ürün Kategorileri"
 
-#: supersalon/products/models.py:16
+#: supersalon/products/models.py:22
 msgid "Name of Product"
 msgstr "Ürün Adı"
 
-#: supersalon/products/models.py:17 supersalon/services/models.py:17
+#: supersalon/products/models.py:23 supersalon/services/models.py:23
 msgid "Price"
 msgstr "Ücret"
 
-#: supersalon/products/models.py:22 supersalon/purchases/models.py:23
+#: supersalon/products/models.py:28 supersalon/purchases/models.py:15
 msgid "Product"
 msgstr "Ürün"
 
-#: supersalon/products/models.py:23
+#: supersalon/products/models.py:29
 msgid "Products"
 msgstr "Ürünler"
 
-#: supersalon/professionals/models.py:12 supersalon/purchases/models.py:56
+#: supersalon/professionals/models.py:7
+msgid "User"
+msgstr ""
+
+#: supersalon/professionals/models.py:11 supersalon/purchases/models.py:40
 msgid "Professional"
 msgstr "Uzman"
 
-#: supersalon/professionals/models.py:13
+#: supersalon/professionals/models.py:12
 msgid "Professionals"
 msgstr "Uzmanlar"
 
-#: supersalon/professionals/models.py:17
-#, python-brace-format
-msgid "{user_full_name}"
-msgstr "{user_full_name}"
-
-#: supersalon/purchases/models.py:7 supersalon/purchases/models.py:40
-msgid "Other"
-msgstr "Diğer"
-
-#: supersalon/purchases/models.py:8
-msgid "Nashi Argan"
-msgstr ""
-
-#: supersalon/purchases/models.py:13
-msgid "Schwarzkopf"
-msgstr ""
-
-#: supersalon/purchases/models.py:21 supersalon/purchases/models.py:54
+#: supersalon/purchases/models.py:10 supersalon/purchases/models.py:35
 #: supersalon/visits/models.py:34
 msgid "Visit"
 msgstr "Ziyaret"
 
-#: supersalon/purchases/models.py:24
-msgid "Count"
+#: supersalon/purchases/models.py:16
+msgid "Amount"
 msgstr "Miktar"
 
-#: supersalon/purchases/models.py:30
+#: supersalon/purchases/models.py:22
 msgid "Product Purchase"
 msgstr "Ürün Satınalımı"
 
-#: supersalon/purchases/models.py:31
+#: supersalon/purchases/models.py:23
 msgid "Product Purchases"
 msgstr "Ürün Satınalımları"
 
-#: supersalon/purchases/models.py:35
+#: supersalon/purchases/models.py:27
 #, python-brace-format
 msgid "{customer} purchased {product}"
 msgstr "{customer} {product} satın aldı."
 
-#: supersalon/purchases/models.py:41
-msgid "Hair (Woman)"
-msgstr ""
-
-#: supersalon/purchases/models.py:46
-msgid "Nail (Woman)"
-msgstr ""
-
-#: supersalon/purchases/models.py:58 supersalon/reminders/models.py:9
-#: supersalon/services/models.py:26
+#: supersalon/purchases/models.py:45 supersalon/reminders/models.py:9
+#: supersalon/services/models.py:32
 msgid "Service"
 msgstr "Hizmet"
 
-#: supersalon/purchases/models.py:64
+#: supersalon/purchases/models.py:51
 msgid "Service Purchase"
 msgstr "Hizmet Satınalımı"
 
-#: supersalon/purchases/models.py:65
+#: supersalon/purchases/models.py:52
 msgid "Service Purchases"
 msgstr "Hizmet Satınalımları"
 
-#: supersalon/purchases/models.py:69
+#: supersalon/purchases/models.py:56
 #, python-brace-format
 msgid "{customer} purchased {service}"
 msgstr "{customer} {service} satın aldı."
@@ -202,11 +190,15 @@ msgstr "Geçmiş Hizmet Günü Hatırlatma Tarihi"
 msgid "CustomerServiceReminderRel"
 msgstr ""
 
+#: supersalon/services/admin.py:22
+msgid "Reminder Fields"
+msgstr "Hatırlatma Alanları"
+
 #: supersalon/services/models.py:6
 msgid "Name of Service Category"
 msgstr "Hizmet Kategori Adı"
 
-#: supersalon/services/models.py:10
+#: supersalon/services/models.py:10 supersalon/services/models.py:21
 msgid "Service Category"
 msgstr "Hizmet Kategorisi"
 
@@ -214,23 +206,23 @@ msgstr "Hizmet Kategorisi"
 msgid "Service Categories"
 msgstr "Hizmet Kategorileri"
 
-#: supersalon/services/models.py:16
+#: supersalon/services/models.py:22
 msgid "Name of Service"
 msgstr "Hizmet Adı"
 
-#: supersalon/services/models.py:18
+#: supersalon/services/models.py:24
 msgid "Due Period (in days)"
 msgstr "Tekrar Periyodu (gün olarak)"
 
-#: supersalon/services/models.py:20
+#: supersalon/services/models.py:26
 msgid "Reminder Day Count Before Due Date"
 msgstr "Gelecek Tekrar Günü Hatırlatması için Gün Sayısı"
 
-#: supersalon/services/models.py:21
+#: supersalon/services/models.py:27
 msgid "Reminder Day Count Before After Date"
 msgstr "Geçmiş Tekrar Günü Hatırlatması için Gün Sayısı"
 
-#: supersalon/services/models.py:27
+#: supersalon/services/models.py:33
 msgid "Services"
 msgstr "Hizmetler"
 
@@ -517,23 +509,23 @@ msgstr "Tercih ettiğin dili seç ve 'Değiştir' tuşuna tıkla."
 msgid "Change"
 msgstr "Değiştir"
 
-#: supersalon/users/models.py:16
-msgid "Name of User"
-msgstr "Kullanıcının Adı"
+#: supersalon/users/admin.py:21
+msgid "This username has already been taken."
+msgstr "Bu kullanıcı adını biri kullanıyor."
 
-#: supersalon/visits/admin.py:45
+#: supersalon/visits/admin.py:46
 msgid "Date Fields"
 msgstr "Tarih Alanları"
 
-#: supersalon/visits/admin.py:46
+#: supersalon/visits/admin.py:47
 msgid "Guest Fields"
 msgstr "Ziyaretçi Alanları"
 
-#: supersalon/visits/admin.py:47
+#: supersalon/visits/admin.py:48
 msgid "Payment Fields"
 msgstr "Ödeme Alanları"
 
-#: supersalon/visits/admin.py:48 supersalon/visits/models.py:29
+#: supersalon/visits/admin.py:49 supersalon/visits/models.py:29
 msgid "Notes"
 msgstr "Notlar"
 
