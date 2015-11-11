@@ -24,7 +24,7 @@ class Service(models.Model):
 	due_period = models.PositiveSmallIntegerField(_("Due Period (in days)"), blank=True, null=True)
 	# reminders
 	reminder_day_count_before_due_date = models.PositiveSmallIntegerField(_("Reminder Day Count Before Due Date"), default=2)
-	remind_day_count_after_due_date = models.PositiveSmallIntegerField(_("Reminder Day Count Before After Date"), default=10)
+	remind_day_count_after_due_date = models.PositiveSmallIntegerField(_("Reminder Day Count Before After Date"), default=12)
 
 	class Meta:
 		unique_together = ('category', 'name')
