@@ -13,6 +13,13 @@ class Customer(models.Model):
         ('m', _("Male")),
     )
 
+    RELATIONSHIP_STATUSES = (
+        ('u', _("Unknown")),
+        ('s', _("Single")),
+        ('e', _("Engaged")),
+        ('m', _("Married")),
+    )
+
     # Basic Profile
     photo = models.ImageField(_("Photo"), max_length=255, upload_to='customers', default='customers/placeholder.jpg')
     name = models.CharField(_("Name"), max_length=255)
@@ -21,8 +28,22 @@ class Customer(models.Model):
     # Contact Info
     mobile_phone_number = PhoneNumberField(_("Mobile Phone Number"), blank=True)
     email = models.EmailField(_("E-mail"), blank=True)
+    # Relationship Info
+    relationship_status = models.CharField(_("Relationship Status"), choices=RELATIONSHIP_STATUSES, max_length=1, default='u')
+    # Special Dates
+    engagement_date = models.DateField(_("Engagement Date"), blank=True, null=True)
+    wedding_date = models.DateField(_("Wedding Date"), blank=True, null=True)
+    # Newspaper
+    newspaper = models.CharField(_("Newspaper"), blank=True, max_length=128)
+    # Magazine
+    magazine = models.CharField(_("Magazine"), blank=True, max_length=128)
+    # Drink
+    drink = models.CharField(_("Drink"), blank=True, max_length=128)
+    # Notes
+    notes = models.TextField(_("Notes"), blank=True)
     # Visits
     last_visit = models.DateField(_("Last Visit"), blank=True, null=True)
+
 
     @staticmethod
     def autocomplete_search_fields():

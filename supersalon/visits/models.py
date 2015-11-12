@@ -4,12 +4,6 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Visit(models.Model):
-    PAYMENT_METHODS = (
-        (1, _("Cash")),
-        (2, _("Credit Card")),
-        (3, _("Cash and Credit Card")),
-    )
-
     # Customer
     customer = models.ForeignKey('customers.Customer', verbose_name=_("Customer"))
     # Date Fields
@@ -22,8 +16,9 @@ class Visit(models.Model):
     child_guest_count = models.PositiveSmallIntegerField(_("Child Guest Count"), default=0)
 
     # Payment Fields
-    payment_method = models.PositiveSmallIntegerField(_("Payment Method"), choices=PAYMENT_METHODS)
-    total_payment_amount = models.DecimalField(_("Total Payment Amount"), decimal_places=2, max_digits=8)
+    cash_payment_amount = models.DecimalField(_("Cash Payment Amount"), decimal_places=2, max_digits=8, default=0)
+    card_payment_amount = models.DecimalField(_("Card Payment Amount"), decimal_places=2, max_digits=8, default=0)
+    total_payment_amount = models.DecimalField(_("Total Payment Amount"), decimal_places=2, max_digits=8, default=0)
 
     # Notes
     notes = models.TextField(_("Notes"), blank=True)
