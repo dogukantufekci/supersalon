@@ -13,6 +13,9 @@ class CustomerAdmin(admin.ModelAdmin):
     fieldsets = (
         (_('Basic Profile'), {'fields': ('photo', 'name', 'birth_date', 'gender')}),
         (_('Contact Info'), {'fields': ('mobile_phone_number', 'email')}),
+        (_('Relationship Fields'), {'fields': ('relationship_status', 'engagement_date', 'wedding_date',)}),
+        (_('Preference Fields'), {'fields': ('newspaper', 'magazine', 'drink',)}),
+        (_('Notes'), {'fields': ('notes',)}),
         (_('Visits'), {'fields': ('last_visit',)}),
     )
 
