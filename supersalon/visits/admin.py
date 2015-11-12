@@ -45,7 +45,7 @@ class VisitAdmin(admin.ModelAdmin):
         (_('Customer'), {'fields': ('customer',)}),
         (_('Date Fields'), {'fields': ('visit_date', 'arrival_time', 'departure_time')}),
         (_('Guest Fields'), {'fields': ('female_guest_count', 'male_guest_count', 'child_guest_count')}),
-        (_('Payment Fields'), {'fields': ('cash_payment_amount', 'card_payment_amount', 'total_payment_amount',)}),
+        (_('Payment Fields'), {'fields': ('total_payment_amount',)}),
         (_('Notes'), {'fields': ('notes',)}),
     )
     inlines = (ServicePurchaseInlineAdmin, ProductPurchaseInlineAdmin,)
@@ -53,7 +53,6 @@ class VisitAdmin(admin.ModelAdmin):
     autocomplete_lookup_fields = {
         'fk': ['customer'],
     }
-    read_only = ('total_payment_amount',)
 
 
 admin.site.register(Visit, VisitAdmin)
