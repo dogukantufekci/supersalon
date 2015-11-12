@@ -5,6 +5,8 @@ from django.dispatch import receiver
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
+from supersalon.reminders.models import CustomerServiceReminderRel, CustomerProductReminderRel
+
 
 class ServicePurchase(models.Model):
     # Visit
@@ -92,7 +94,7 @@ class ProductPurchase(models.Model):
 
 @receiver([models.signals.post_save], sender=ProductPurchase)
 def product_purchase_post_save(sender, instance, created, **kwargs):
-    if instance.service.due_period:
+    if instance.product.due_period:
         # Get dates
         due_date = instance.visit.visit_date + datetime.timedelta(days=instance.product.due_period)
         upcoming_reminder_date = due_date - datetime.timedelta(days=instance.product.reminder_day_count_before_due_date)
