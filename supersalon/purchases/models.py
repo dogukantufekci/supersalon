@@ -40,25 +40,26 @@ class ServicePurchase(models.Model):
 
 @receiver([models.signals.post_save], sender=ServicePurchase)
 def service_purchase_post_save(sender, instance, created, **kwargs):
-    # Get dates
-    due_date = instance.visit.visit_date + datetime.timedelta(days=instance.service.due_period)
-    upcoming_reminder_date = due_date - datetime.timedelta(days=instance.service.reminder_day_count_before_due_date)
-    past_reminder_date = due_date + datetime.timedelta(days=instance.service.reminder_day_count_after_due_date)
-    # Update reminder dates or create new reminder
-    try:
-        reminder = CustomerServiceReminderRel.objects.get(
-            customer=instance.visit.customer,
-            service=instance.service)
-        reminder.upcoming_reminder_date = upcoming_reminder_date
-        reminder.past_reminder_date = past_reminder_date
-        reminder.save()
-    except:
-        CustomerServiceReminderRel.objects.create(
-            customer=instance.visit.customer,
-            service=instance.service,
-            upcoming_reminder_date=upcoming_reminder_date,
-            past_reminder_date=past_reminder_date,
-        )
+    if instance.service.due_period:
+        # Get dates
+        due_date = instance.visit.visit_date + datetime.timedelta(days=instance.service.due_period)
+        upcoming_reminder_date = due_date - datetime.timedelta(days=instance.service.reminder_day_count_before_due_date)
+        past_reminder_date = due_date + datetime.timedelta(days=instance.service.reminder_day_count_after_due_date)
+        # Update reminder dates or create new reminder
+        try:
+            reminder = CustomerServiceReminderRel.objects.get(
+                customer=instance.visit.customer,
+                service=instance.service)
+            reminder.upcoming_reminder_date = upcoming_reminder_date
+            reminder.past_reminder_date = past_reminder_date
+            reminder.save()
+        except:
+            CustomerServiceReminderRel.objects.create(
+                customer=instance.visit.customer,
+                service=instance.service,
+                upcoming_reminder_date=upcoming_reminder_date,
+                past_reminder_date=past_reminder_date,
+            )
 
 
 class ProductPurchase(models.Model):
@@ -91,22 +92,23 @@ class ProductPurchase(models.Model):
 
 @receiver([models.signals.post_save], sender=ProductPurchase)
 def product_purchase_post_save(sender, instance, created, **kwargs):
-    # Get dates
-    due_date = instance.visit.visit_date + datetime.timedelta(days=instance.product.due_period)
-    upcoming_reminder_date = due_date - datetime.timedelta(days=instance.product.reminder_day_count_before_due_date)
-    past_reminder_date = due_date + datetime.timedelta(days=instance.product.reminder_day_count_after_due_date)
-    # Update reminder dates or create new reminder
-    try:
-        reminder = CustomerProductReminderRel.objects.get(
-            customer=instance.visit.customer,
-            product=instance.product)
-        reminder.upcoming_reminder_date = upcoming_reminder_date
-        reminder.past_reminder_date = past_reminder_date
-        reminder.save()
-    except:
-        CustomerProductReminderRel.objects.create(
-            customer=instance.visit.customer,
-            product=instance.product,
-            upcoming_reminder_date=upcoming_reminder_date,
-            past_reminder_date=past_reminder_date,
-        )
+    if instance.service.due_period:
+        # Get dates
+        due_date = instance.visit.visit_date + datetime.timedelta(days=instance.product.due_period)
+        upcoming_reminder_date = due_date - datetime.timedelta(days=instance.product.reminder_day_count_before_due_date)
+        past_reminder_date = due_date + datetime.timedelta(days=instance.product.reminder_day_count_after_due_date)
+        # Update reminder dates or create new reminder
+        try:
+            reminder = CustomerProductReminderRel.objects.get(
+                customer=instance.visit.customer,
+                product=instance.product)
+            reminder.upcoming_reminder_date = upcoming_reminder_date
+            reminder.past_reminder_date = past_reminder_date
+            reminder.save()
+        except:
+            CustomerProductReminderRel.objects.create(
+                customer=instance.visit.customer,
+                product=instance.product,
+                upcoming_reminder_date=upcoming_reminder_date,
+                past_reminder_date=past_reminder_date,
+            )
