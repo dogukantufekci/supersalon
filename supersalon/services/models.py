@@ -21,11 +21,11 @@ class Service(models.Model):
 		verbose_name=_("Service Category"))
 	name = models.CharField(_("Name of Service"), max_length=255)
 	price = models.DecimalField(_("Price"), decimal_places=2, max_digits=8)
-	discounted_price = models.DecimalField(_("Discounted Price"), decimal_places=2, max_digits=8, blank=True, null=True)
 	due_period = models.PositiveSmallIntegerField(_("Due Period (in days)"), blank=True, null=True)
 	# reminders
 	reminder_day_count_before_due_date = models.PositiveSmallIntegerField(_("Reminder Day Count Before Due Date"), default=2)
-	remind_day_count_after_due_date = models.PositiveSmallIntegerField(_("Reminder Day Count Before After Date"), default=12)
+	reminder_day_count_after_due_date = models.PositiveSmallIntegerField(_("Reminder Day Count Before After Date"), default=12)
+
 
 	class Meta:
 		unique_together = ('category', 'name')

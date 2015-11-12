@@ -21,7 +21,12 @@ class Product(models.Model):
 		verbose_name=_("Product Category"))
 	name = models.CharField(_("Name of Product"), max_length=255)
 	price = models.DecimalField(_("Price"), decimal_places=2, max_digits=8)
+	due_period = models.PositiveSmallIntegerField(_("Due Period (in days)"), blank=True, null=True)
+	# reminders
+	reminder_day_count_before_due_date = models.PositiveSmallIntegerField(_("Reminder Day Count Before Due Date"), default=2)
+	reminder_day_count_after_due_date = models.PositiveSmallIntegerField(_("Reminder Day Count Before After Date"), default=12)
 
+	
 	class Meta:
 		unique_together = ('category', 'name')
 		ordering = ('category', 'name')
