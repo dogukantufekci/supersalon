@@ -14,10 +14,10 @@ class ProductPurchase(models.Model):
         related_query_name='product_purchase',
         verbose_name=_("Product"))
     amount = models.PositiveSmallIntegerField(_("Amount"), default=1)
-    free_amount = models.PositiveSmallIntegerField(_("Free Amount"), default=0)
-    # Notes
-    notes = models.TextField(_("Notes"), blank=True)
-    
+    # Discount Fields
+    discounted_unit_price = models.DecimalField(_("Discounted Unit Price"), decimal_places=2, max_digits=8, blank=True, null=True)
+    discount_notes = models.TextField(_("Discount Notes"), blank=True)
+
 
     class Meta:
         unique_together = ('visit', 'product',)
@@ -46,9 +46,9 @@ class ServicePurchase(models.Model):
         related_name='product_purchases',
         related_query_name='product_purchase',
         verbose_name=_("Service"))
-    is_free = models.BooleanField(_("Is Free"), default=False)
     # Notes
-    notes = models.TextField(_("Notes"), blank=True)
+    discounted_unit_price = models.DecimalField(_("Discounted Unit Price"), decimal_places=2, max_digits=8, blank=True, null=True)
+    discount_notes = models.TextField(_("Discount Notes"), blank=True)
 
 
     class Meta:
