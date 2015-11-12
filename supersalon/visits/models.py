@@ -1,6 +1,10 @@
 from django.db import models
+from django.dispatch import receiver
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
+
+
+from supersalon.purchases.models import ServicePurchase, ProductPurchase
 
 
 class Visit(models.Model):
@@ -44,3 +48,12 @@ class Visit(models.Model):
         for service_purchase in self.service_purchases.all():
             x += "%s, " % service_purchase.service.name
         return x
+
+
+@receiver([models.signals.post_save], sender=Visit)
+def visit_post_save(sender, instance, created, **kwargs):
+    # Update Customer last_visit
+    last_visit = Visit.objects.latest('visit_date')
+    instance.customer.last_visit = last_visit.visit_date
+    instance.customer.save()
+    # Send SMS to thank for the visit
